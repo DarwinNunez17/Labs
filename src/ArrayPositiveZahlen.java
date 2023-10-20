@@ -40,4 +40,5 @@ public class ArrayPositiveZahlen {
         }
         return sum - max;
     }
+
 }

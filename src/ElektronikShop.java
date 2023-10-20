@@ -35,11 +35,26 @@ public class ElektronikShop {
     }
 
     public static int findTotalAmount(int budget, int[] keyboards, int[] usbDrives) {
-        int cheapestKeyboard = cheapestKeyboard(keyboards);
-        int mostExpensiveUSBDrive = mostExpensiveUSBDrive(usbDrives, budget);
-        if (cheapestKeyboard == Integer.MAX_VALUE || mostExpensiveUSBDrive == -1) {
+        int cheapestKeyboard = Integer.MAX_VALUE;
+        int cheapestUSBDrive = Integer.MAX_VALUE;
+
+        for (int price : keyboards) {
+            if (price < cheapestKeyboard) {
+                cheapestKeyboard = price;
+            }
+        }
+
+        for (int price : usbDrives) {
+            if (price < cheapestUSBDrive) {
+                cheapestUSBDrive = price;
+            }
+        }
+
+        int totalCost = cheapestKeyboard + cheapestUSBDrive;
+        if (totalCost > budget) {
             return -1;
         }
-        return cheapestKeyboard + mostExpensiveUSBDrive;
+
+        return totalCost;
     }
 }

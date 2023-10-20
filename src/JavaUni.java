@@ -29,12 +29,13 @@ public class JavaUni {
     private static int round(int grade) {
         if (grade < 38 || grade % 5 < 3) {
             return grade;
-        } else {
+        } else if(grade >= 38 && grade % 5 >=3){
             return grade + (5 - (grade % 5));
         }
+        return 0;
     }
     public static int[] abgerundeteNoten(int[] noten) {
-        int[] abgerundete = new int[noten.length]; // Create an array to store the rounded values
+        int[] abgerundete = new int[noten.length];
         for (int i = 0; i < noten.length; i++) {
             abgerundete[i] = round(noten[i]);
         }
